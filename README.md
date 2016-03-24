@@ -1,3 +1,5 @@
-# TypoScript2 language support for Atom
+# language-typoscript2
 
-Provides syntax highlighting for TypoScript2 files.
+> Provides language support for Neos' TypoScript 2 rendering lanugage
+
+> --- based on the works of @kese

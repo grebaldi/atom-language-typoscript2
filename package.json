@@ -1,11 +1,11 @@
 {
   "name": "language-typoscript2",
-  "version": "0.2.0",
-  "description": "TypoScript2 language support for Atom",
+  "version": "1.0.0",
+  "description": "Neos' TypoScript 2 language support for Atom",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kese/atom-language-typoscript2.git"
+    "url": "https://github.com/grebaldi/atom-language-typoscript2.git"
   },
   "engines": {
     "atom": "*"
@@ -13,21 +13,7 @@
   "readme": "# TypoScript2 language support for Atom\n\nProvides syntax highlighting for TypoScript2 files.\n",
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/kese/atom-language-typoscript2/issues"
+      "url": "https://github.com/grebaldi/atom-language-typoscript2/issues"
   },
-  "homepage": "https://github.com/kese/atom-language-typoscript2",
-  "_id": "language-typoscript2@0.2.0",
-  "_shasum": "62fdaf197a18a8e660fa1f1c186a20c27eef5322",
-  "_resolved": "file:../d-115518-10065-1uk5jjj/package.tgz",
-  "_from": "../d-115518-10065-1uk5jjj/package.tgz",
-  "_atomModuleCache": {
-    "version": 1,
-    "dependencies": [],
-    "extensions": {
-      ".json": [
-        "package.json"
-      ]
-    },
-    "folders": []
-  }
+  "homepage": "https://github.com/grebaldi/atom-language-typoscript2"
 }
