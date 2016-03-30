@@ -1,6 +1,6 @@
 {
   "name": "language-typoscript2",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Neos' TypoScript 2 language support for Atom",
   "license": "MIT",
   "repository": {
@@ -13,7 +13,7 @@
   "readme": "# TypoScript2 language support for Atom\n\nProvides syntax highlighting for TypoScript2 files.\n",
   "readmeFilename": "README.md",
   "bugs": {
-      "url": "https://github.com/grebaldi/atom-language-typoscript2/issues"
+    "url": "https://github.com/grebaldi/atom-language-typoscript2/issues"
   },
   "homepage": "https://github.com/grebaldi/atom-language-typoscript2"
 }
