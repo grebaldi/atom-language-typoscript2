@@ -6,50 +6,50 @@
 
 'patterns': [{ 'include': '#statement' }]
 
-'repository':  
+'repository':
   'statement':
     'patterns': [
       { 'include': '#line-comment' }
-      { 'include': '#block-comment' }      
+      { 'include': '#block-comment' }
       { 'include': '#block-statement' }
       { 'include': '#line-statement' }
     ]
-    
+
   'line-comment':
     'match': '^\\s*(?:#|//)[\\s\\S]*$'
     'name': 'comment.line'
-    
+
   'block-comment':
     'begin': '^\\s*/\\*'
-    'end': '\\s*\\*/\\s*$'    
+    'end': '\\s*\\*/\\s*$'
     'name': 'comment.block'
 
   'line-statement':
     'match': '^\\s*(\\S(?:\\s*\\S)*)\\s*$'
     'name': 'meta.line-statement'
-    'captures': '1': 'patterns': [      
+    'captures': '1': 'patterns': [
       { 'include': '#namespace-statement' }
-      { 'include': '#include-statement' }      
+      { 'include': '#include-statement' }
       { 'include': '#value-assignment' }
-      { 'include': '#reset-statement' }            
-      { 'include': '#object-inheritance' }                  
+      { 'include': '#reset-statement' }
+      { 'include': '#object-inheritance' }
       { 'include': '#prototype-inheritance'}
       { 'include': '#invalid-expression' }
     ]
-    
+
   'block-statement':
     'begin': '^\\s*(\\S(?:\\s*\\S)*)\\s*\\{\\s*$'
     'name': 'meta.block-statement'
     'end': '^\\s*\\}\\s*$'
-    'beginCaptures':      
-      '1': 'patterns': [        
+    'beginCaptures':
+      '1': 'patterns': [
         { 'include': '#object-assignment' }
         { 'include': '#object-inheritance' }
         { 'include': '#prototype-inheritance' }
         { 'include': '#path' }
         { 'include': '#invalid-expression' }
-      ]    
-    'patterns': [{ 'include': '#statement' }] 
+      ]
+    'patterns': [{ 'include': '#statement' }]
 
   'namespace-statement':
     'match': '^\\s*(namespace:)\\s*(\\w+)\\s*(=)\\s*(\\w(?:\\.?\\w)*)\\s*$'
@@ -66,7 +66,7 @@
     'captures':
       '1': 'name': 'keyword.other'
       '2': 'name': 'string.unquoted'
-      
+
   'object-assignment':
     'match': '^(\\S+)\\s*(=)\\s*(\\S+)$'
     'name': 'meta.assignment'
@@ -74,7 +74,7 @@
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
       '3': 'patterns': [{ 'include': '#assigned-object' }]
-      
+
   'assigned-object':
     'match': '^([\\s\\S]*)$'
     'name': 'assigned-value'
@@ -90,7 +90,7 @@
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
       '3': 'patterns': [{ 'include': '#assigned-value' }]
-        
+
   'assigned-value':
     'match': '^([\\s\\S]*)$'
     'name': 'assigned-value'
@@ -103,28 +103,28 @@
         { 'include': '#eel-expression' }
         { 'include': '#invalid-expression'}
       ]
-  
+
   'string-literal':
     'match': '^([\\\'][\\s\\S]*[\\\'])|("[\\s\\S]*")$'
     'captures':
       '1': 'name': 'string.quoted.single'
       '2': 'name': 'string.quoted.double'
-      
+
   'numeric-literal':
     'match': '^\\d+(?:\\.\\d+)?$'
     'name': 'constant.numeric'
-    
+
   'boolean-literal':
     'match': '^(?:[tT][rR][uU][eE])|(?:[fF][aA][lL][sS][eE])$'
     'name': 'constant.language'
-        
+
   'prototype-inheritance':
     'match': '^(\\S+)\\s*(<)\\s*(\\S+)$'
     'captures':
       '1': 'patterns': [{ 'include': '#prototype' }]
       '2': 'name': 'keyword.operator'
       '3': 'patterns': [{ 'include': '#prototype' }]
-      
+
   'object-inheritance':
     'match': '^(\\S+?\\.)?(\\w+)\\s*(<)\\s*(\\S+?\\.)?(\\w+)$'
     'captures':
@@ -133,59 +133,57 @@
       '3': 'name': 'keyword.operator'
       '4': 'patterns': [{ 'include': '#path' }]
       '5': 'patterns': [{ 'include': '#property' }]
-    
+
   'reset-statement':
     'match': '^(\\S+)\\s*(>)$'
-    'captures': 
+    'captures':
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
-  
+
   'path':
     'match': '^(\\S+?)(?:\\.(?![^\\(]+\\))(\\S+))?$'
     'captures':
       '1': 'patterns': [
         { 'include': '#prototype'}
-        { 'include': '#property' }        
+        { 'include': '#property' }
         { 'include': '#invalid-expression' }
       ]
       '2': 'patterns': [{ 'include': '#path' }]
-  
+
   'property':
     'match': '^([\\s\\S]*)$'
     'captures': '1': 'patterns': [
       { 'include': '#property-name' }
       { 'include': '#invalid-expression' }
     ]
-    
-  # though it seems property-names may be any string matching ^[\\w:-]+$
-  # enforce colons/dashes to be preceded/followed by a wording char
+
   'property-name':
-    'match': '^(\\w(?:[-:]?\\w)*)$|^(@\\w(?:[-:]?\\w)*)$'
-    'captures': 
+    'match': '^(\\w(?:[-:]*\\w)*)$|^(@\\w(?:[-:]*\\w)*)$'
+    'captures':
       '1': 'name': 'variable'
       '2': 'name': 'support.variable'
-  
+
   'prototype':
-    'match': '^(prototype)\\(([^\\(]+)\\)$'    
+    'match': '^(prototype)\\(([^\\(]+)\\)$'
     'captures':
-      '1': 'name': 'keyword.other'      
+      '1': 'name': 'keyword.other'
       '2': 'patterns': [
         { 'include': '#prototype-name' }
         { 'include': '#invalid-expression' }
       ]
-      
+
   # though it seems prototype-names may be any string matching ^[\\w\\.:]+$
   # enforce colons/dots to be preceded/followed by a wording char
   'prototype-name':
     'match': '^\\w(?:(?:\\.|:)?\\w)*$'
     'name': 'entity.name.type.class'
-  
+
   'eel-expression':
     'begin': '^\\$\\{'
-    'end': '\\}$'    
-    'captures': '0': 'name': 'meta.eel-expression'            
+    'end': '\\}$'
+    'captures': '0': 'name': 'meta.eel-expression'
     'patterns': [{ 'include': 'source.js' }]
-    
-  'invalid-expression':  
+
+  'invalid-expression':
     'match': '^[\\s\\S]*$'
     'name': 'invalid.illegal'
