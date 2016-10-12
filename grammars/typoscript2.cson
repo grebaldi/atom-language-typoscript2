@@ -29,11 +29,12 @@
     'patterns': [
       { 'include': '#single-quoted-string-assignment' }
       { 'include': '#double-quoted-string-assignment' }
+      { 'include': '#multiline-eel-expression-assignment' }
     ]
 
   'single-quoted-string-assignment':
     'name': 'string.quoted.single'
-    'begin': '^(\\S+)\\s*(=)\\s*([\\\'][^\\\']*)$'
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*([\\\'][^\\\']*)$'
     'beginCaptures':
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
@@ -44,7 +45,7 @@
 
   'double-quoted-string-assignment':
     'name': 'string.quoted.double'
-    'begin': '^(\\S+)\\s*(=)\\s*("[^"]*)$'
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*("[^"]*)$'
     'beginCaptures':
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
@@ -52,6 +53,17 @@
     'end': '^(\\s*[\\s\\S]*")\\s*$'
     'endCaptures':
       '1': 'name': 'string.quoted.double'
+
+  'multiline-eel-expression-assignment':
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*\\$\\{([\\s\\S]*)$'
+    'beginCaptures':
+      '1': 'patterns': [{ 'include': '#path' }]
+      '2': 'name': 'keyword.operator'
+      '3': 'patterns': [{ 'include': 'source.js' }]
+    'end': '^([\\s\\S]*)\\}$'
+    'endCaptures':
+      '1': 'patterns': [{ 'include': 'source.js' }]
+    'patterns': [{ 'include': 'source.js' }]
 
   'line-statement':
     'match': '^\\s*(\\S(?:\\s*\\S)*)\\s*$'
