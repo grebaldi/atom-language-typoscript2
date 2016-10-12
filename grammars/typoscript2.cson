@@ -12,6 +12,7 @@
       { 'include': '#line-comment' }
       { 'include': '#block-comment' }
       { 'include': '#block-statement' }
+      { 'include': '#multiline-value-assignment' }
       { 'include': '#line-statement' }
     ]
 
@@ -23,6 +24,34 @@
     'begin': '^\\s*/\\*'
     'end': '\\s*\\*/\\s*$'
     'name': 'comment.block'
+
+  'multiline-value-assignment':
+    'patterns': [
+      { 'include': '#single-quoted-string-assignment' }
+      { 'include': '#double-quoted-string-assignment' }
+    ]
+
+  'single-quoted-string-assignment':
+    'name': 'string.quoted.single'
+    'begin': '^(\\S+)\\s*(=)\\s*([\\\'][^\\\']*)$'
+    'beginCaptures':
+      '1': 'patterns': [{ 'include': '#path' }]
+      '2': 'name': 'keyword.operator'
+      '3': 'name': 'string.quoted.single'
+    'end': '^(\\s*[\\s\\S]*[\\\'])\\s*$'
+    'endCaptures':
+      '1': 'name': 'string.quoted.single'
+
+  'double-quoted-string-assignment':
+    'name': 'string.quoted.double'
+    'begin': '^(\\S+)\\s*(=)\\s*("[^"]*)$'
+    'beginCaptures':
+      '1': 'patterns': [{ 'include': '#path' }]
+      '2': 'name': 'keyword.operator'
+      '3': 'name': 'string.quoted.double'
+    'end': '^(\\s*[\\s\\S]*")\\s*$'
+    'endCaptures':
+      '1': 'name': 'string.quoted.double'
 
   'line-statement':
     'match': '^\\s*(\\S(?:\\s*\\S)*)\\s*$'
