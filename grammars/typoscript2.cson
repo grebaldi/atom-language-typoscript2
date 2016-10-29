@@ -55,7 +55,7 @@
       '1': 'name': 'string.quoted.double'
 
   'multiline-eel-expression-assignment':
-    'begin': '^\\s*(\\S+)\\s*(=)\\s*\\$\\{([\\s\\S]*)$'
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*\\$\\{([^\\}]*)$'
     'beginCaptures':
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
