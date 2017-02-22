@@ -2,7 +2,7 @@
 
 'scopeName': 'source.typoscript2'
 
-'fileTypes': [ 'ts2' ]
+'fileTypes': [ 'ts2', 'fusion' ]
 
 'patterns': [{ 'include': '#statement' }]
 
