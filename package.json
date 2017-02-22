@@ -1,6 +1,6 @@
 {
   "name": "language-typoscript2",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "Neos' TypoScript 2 language support for Atom",
   "license": "MIT",
   "repository": {
