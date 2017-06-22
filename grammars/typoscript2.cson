@@ -12,6 +12,7 @@
       { 'include': '#line-comment' }
       { 'include': '#block-comment' }
       { 'include': '#block-statement' }
+      { 'include': '#afx-assignment' }
       { 'include': '#multiline-value-assignment' }
       { 'include': '#line-statement' }
     ]
@@ -24,6 +25,17 @@
     'begin': '^\\s*/\\*'
     'end': '\\s*\\*/\\s*$'
     'name': 'comment.block'
+
+  'afx-assignment':
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*afx`([\\s\\S]*)$'
+    'beginCaptures':
+      '1': 'patterns': [{ 'include': '#path' }]
+      '2': 'name': 'keyword.operator'
+      '3': 'patterns': [{ 'include': 'source.js' }]
+    'end': '^([\\s\\S]*)\\`$'
+    'endCaptures':
+      '1': 'patterns': [{ 'include': 'source.js' }]
+    'patterns': [{ 'include': 'source.js' }]
 
   'multiline-value-assignment':
     'patterns': [
