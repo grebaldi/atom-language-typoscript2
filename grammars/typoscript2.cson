@@ -84,7 +84,7 @@
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
       '3': 'patterns': [{ 'include': 'source.js' }]
-    'end': '^([\\s\\S]*)\\}$'
+    'end': '}$'
     'endCaptures':
       '1': 'patterns': [{ 'include': 'source.js' }]
     'patterns': [{ 'include': 'source.js' }]
