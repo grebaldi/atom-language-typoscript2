@@ -13,6 +13,7 @@
       { 'include': '#block-comment' }
       { 'include': '#block-statement' }
       { 'include': '#afx-assignment' }
+      { 'include': '#css-assignment' }
       { 'include': '#multiline-value-assignment' }
       { 'include': '#line-statement' }
     ]
@@ -36,6 +37,17 @@
     'endCaptures':
       '1': 'patterns': [{ 'include': 'source.js' }]
     'patterns': [{ 'include': 'source.js' }]
+
+  'css-assignment':
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*css`([\\s\\S]*)$'
+    'beginCaptures':
+      '1': 'patterns': [{ 'include': '#path' }]
+      '2': 'name': 'keyword.operator'
+      '3': 'patterns': [{ 'include': 'source.css.styled' }]
+    'end': '^([\\s\\S]*)\\`$'
+    'endCaptures':
+      '1': 'patterns': [{ 'include': 'source.css.styled' }]
+    'patterns': [{ 'include': 'source.css.styled' }]
 
   'multiline-value-assignment':
     'patterns': [
