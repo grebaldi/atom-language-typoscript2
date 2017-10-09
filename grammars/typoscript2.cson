@@ -149,7 +149,7 @@
     ]
 
   'value-assignment':
-    'match': '^(\\S+)\\s*(=)\\s*(\\S[\\s\\S]*)$'
+    'match': '^(.+?)\\s*(=)\\s*(\\S[\\s\\S]*)$'
     'name': 'meta.assignment'
     'captures':
       '1': 'patterns': [{ 'include': '#path' }]
@@ -191,22 +191,20 @@
       '3': 'patterns': [{ 'include': '#prototype' }]
 
   'object-inheritance':
-    'match': '^(\\S+?\\.)?(\\w+)\\s*(<)\\s*(\\S+?\\.)?(\\w+)$'
+    'match': '^\\s*(.+?)\\s*(<)\\s*(.+?)\\s*$'
     'captures':
       '1': 'patterns': [{ 'include': '#path' }]
-      '2': 'patterns': [{ 'include': '#property' }]
-      '3': 'name': 'keyword.operator'
-      '4': 'patterns': [{ 'include': '#path' }]
-      '5': 'patterns': [{ 'include': '#property' }]
+      '2': 'name': 'keyword.operator'
+      '3': 'patterns': [{ 'include': '#path' }]
 
   'reset-statement':
-    'match': '^(\\S+)\\s*(>)$'
+    'match': '^(.+?)\\s*(>)$'
     'captures':
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
 
   'path':
-    'match': '^(\\S+?)(?:\\.(?![^\\(]+\\))(\\S+))?$'
+    'match': '^(.+?)(?:\\.(?![^\\(]+\\))(.+))?$'
     'captures':
       '1': 'patterns': [
         { 'include': '#prototype'}
@@ -223,10 +221,12 @@
     ]
 
   'property-name':
-    'match': '^(\\w(?:[-:]*\\w)*)$|^(@\\w(?:[-:]*\\w)*)$'
+    'match': '^([\\w](?:[-:]*[\\w])*)$|^(@[\\w](?:[-:]*[\\w])*)$|^("[^"\\\\]*(?:\\\\.[^"\\\\]*)*")$|^(\'[^\'\\\\]*(?:\\\\.[^\'\\\\]*)*\')$'
     'captures':
       '1': 'name': 'variable'
       '2': 'name': 'support.variable'
+      '3': 'name': 'variable'
+      '4': 'name': 'variable'
 
   'prototype':
     'match': '^(prototype)\\(([^\\(]+)\\)$'
