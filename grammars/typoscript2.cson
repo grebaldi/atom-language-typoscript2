@@ -16,6 +16,7 @@
       { 'include': '#multiline-afx-assignment' }
       { 'include': '#multiline-css-assignment' }
       { 'include': '#multiline-yaml-assignment' }
+      { 'include': '#multiline-markdown-assignment' }
       { 'include': '#line-statement' }
     ]
 
@@ -60,6 +61,18 @@
       '2': 'name': 'keyword.operator'
     'end': '`$'
     'patterns': [{ 'include': 'source.yaml' }]
+
+  'multiline-markdown-assignment':
+    'name': 'meta.multiline-css-assignment'
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*(md|markdown)`([^`]*)$'
+    'beginCaptures':
+      '1': 'patterns': [{ 'include': '#path' }]
+      '2': 'name': 'keyword.operator'
+      '4': 'patterns': [{ 'include': 'source.gfm' }]
+    'end': '^([\\s\\S]*)`$'
+    'endCaptures':
+      '1': 'patterns': [{ 'include': 'source.gfm' }]
+    'patterns': [{ 'include': 'source.gfm' }]
 
   'multiline-value-assignment':
     'patterns': [
@@ -196,6 +209,7 @@
         { 'include': '#eel-expression' }
         { 'include': '#afx-expression' }
         { 'include': '#css-expression' }
+        { 'include': '#markdown-expression' }
         { 'include': '#invalid-expression'}
       ]
 
@@ -290,6 +304,12 @@
     'end': '`$'
     'captures': '0': 'name': 'meta.css-expression'
     'patterns': [{ 'include': 'source.css.styled' }]
+
+  'markdown-expression':
+    'begin': '^(md|markdown)`'
+    'end': '`$'
+    'captures': '0': 'name': 'meta.markdown-expression'
+    'patterns': [{ 'include': 'source.gfm' }]
 
   'invalid-expression':
     'match': '^[\\s\\S]*$'
