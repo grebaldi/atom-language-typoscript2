@@ -95,6 +95,7 @@
     'captures': '1': 'patterns': [
       { 'include': '#namespace-statement' }
       { 'include': '#include-statement' }
+      { 'include': '#const-statement' }
       { 'include': '#value-assignment' }
       { 'include': '#reset-statement' }
       { 'include': '#object-inheritance' }
@@ -131,6 +132,20 @@
     'captures':
       '1': 'name': 'keyword.other'
       '2': 'name': 'string.unquoted'
+
+  'const-statement':
+    'match': '^\\s*(const:)\\s*([A-Z_][A-Z0-9_]+)\\s*(=)\\s*(.+)\\s*$'
+    'name': 'meta.const-statement'
+    'captures':
+      '1': 'name': 'keyword.other'
+      '2': 'patterns': [{ 'include': '#property' }]
+      '3': 'name': 'keyword.operator'
+      '4': 'patterns': [
+        { 'include': '#string-literal' }
+        { 'include': '#numeric-literal' }
+        { 'include': '#boolean-literal' }
+        { 'include': '#invalid-expression'}
+      ]
 
   'object-assignment':
     'match': '^(\\S+)\\s*(=)\\s*(\\S+)$'
