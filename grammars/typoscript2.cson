@@ -15,6 +15,7 @@
       { 'include': '#block-statement' }
       { 'include': '#multiline-afx-assignment' }
       { 'include': '#multiline-css-assignment' }
+      { 'include': '#multiline-yaml-assignment' }
       { 'include': '#line-statement' }
     ]
 
@@ -50,6 +51,15 @@
     'endCaptures':
       '1': 'patterns': [{ 'include': 'source.css.styled' }]
     'patterns': [{ 'include': 'source.css.styled' }]
+
+  'multiline-yaml-assignment':
+    'name': 'meta.multiline-yaml-assignment'
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*yaml`$'
+    'beginCaptures':
+      '1': 'patterns': [{ 'include': '#path' }]
+      '2': 'name': 'keyword.operator'
+    'end': '`$'
+    'patterns': [{ 'include': 'source.yaml' }]
 
   'multiline-value-assignment':
     'patterns': [
