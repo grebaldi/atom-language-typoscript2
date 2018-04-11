@@ -15,6 +15,7 @@
       { 'include': '#block-statement' }
       { 'include': '#afx-assignment' }
       { 'include': '#css-assignment' }
+      { 'include': '#multiline-afx-assignment' }
       { 'include': '#line-statement' }
     ]
 
@@ -27,13 +28,14 @@
     'end': '\\s*\\*/\\s*$'
     'name': 'comment.block'
 
-  'afx-assignment':
-    'begin': '^\\s*(\\S+)\\s*(=)\\s*afx`([\\s\\S]*)$'
+  'multiline-afx-assignment':
+    'name': 'meta.multiline-afx-assignment'
+    'begin': '^\\s*(\\S+)\\s*(=)\\s*afx`([^`]*)$'
     'beginCaptures':
       '1': 'patterns': [{ 'include': '#path' }]
       '2': 'name': 'keyword.operator'
       '3': 'patterns': [{ 'include': 'source.js' }]
-    'end': '^([\\s\\S]*)\\`$'
+    'end': '^([\\s\\S]*)`$'
     'endCaptures':
       '1': 'patterns': [{ 'include': 'source.js' }]
     'patterns': [{ 'include': 'source.js' }]
@@ -182,6 +184,7 @@
         { 'include': '#boolean-literal' }
         { 'include': '#prototype-name' }
         { 'include': '#eel-expression' }
+        { 'include': '#afx-expression' }
         { 'include': '#invalid-expression'}
       ]
 
@@ -263,6 +266,12 @@
     'begin': '^\\$\\{'
     'end': '\\}$'
     'captures': '0': 'name': 'meta.eel-expression'
+    'patterns': [{ 'include': 'source.js' }]
+
+  'afx-expression':
+    'begin': '^afx`'
+    'end': '`$'
+    'captures': '0': 'name': 'meta.afx-expression'
     'patterns': [{ 'include': 'source.js' }]
 
   'invalid-expression':
