@@ -11,10 +11,10 @@
     'patterns': [
       { 'include': '#line-comment' }
       { 'include': '#block-comment' }
+      { 'include': '#multiline-value-assignment' }
       { 'include': '#block-statement' }
       { 'include': '#afx-assignment' }
       { 'include': '#css-assignment' }
-      { 'include': '#multiline-value-assignment' }
       { 'include': '#line-statement' }
     ]
 
@@ -79,6 +79,7 @@
       '1': 'name': 'string.quoted.double'
 
   'multiline-eel-expression-assignment':
+    'name': 'meta.eel-expression-assignment'
     'begin': '^\\s*(\\S+)\\s*(=)\\s*\\$\\{([^\\}]*)$'
     'beginCaptures':
       '1': 'patterns': [{ 'include': '#path' }]
